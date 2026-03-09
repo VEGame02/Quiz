@@ -9,48 +9,42 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
 
     <style>
-
         html, body {
             margin: 0;
             padding: 0;
-            background: #000;
-        }
-
-        .webgl-content {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+            height: 100%;
+            overflow: hidden;
         }
 
         #unityContainer {
-            width: 100%;
-            max-width: 960px;
-            height: auto;
-            aspect-ratio: 16 / 9;
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 
     <script>
-        var unityInstance = UnityLoader.instantiate(
-            "unityContainer",
-            "Build/Quiz.json",
-            { onProgress: UnityProgress }
-        );
+        var unityInstance;
+
+        window.onload = function () {
+            unityInstance = UnityLoader.instantiate(
+                "unityContainer",
+                "Build/Quiz.json",
+                { onProgress: UnityProgress }
+            );
+        };
     </script>
 
 </head>
 
 <body>
 
-    <div class="webgl-content">
-        <div id="unityContainer"></div>
-    </div>
+    <div id="unityContainer"></div>
 
 </body>
 </html>
